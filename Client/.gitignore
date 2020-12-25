@@ -5,10 +5,6 @@
 /.pnp
 .pnp.js
 .eslintcache
-<<<<<<< HEAD
-=======
-
->>>>>>> 2cdece3d15efaa100e05d45902f67d99fab71b9f
 
 # testing
 /coverage
