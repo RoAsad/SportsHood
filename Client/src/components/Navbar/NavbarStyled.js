@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { FaBasketballBall } from "react-icons/fa";
-import { AiOutlineMenu } from "react-icons/ai";
+import { FaBasketballBall, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
@@ -48,7 +47,7 @@ export const BurgerMenuIcon = styled.div`
   }
 `;
 
-export const MenuCloseIcon = styled(AiOutlineMenu)`
+export const MenuCloseIcon = styled(FaBars)`
   display: none;
 `;
 
