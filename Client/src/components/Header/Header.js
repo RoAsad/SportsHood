@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
+
 // STYLING COMPONENTS
 const Head = styled.div`
   display: flex;
@@ -10,12 +13,21 @@ const Head = styled.div`
   font-size: 2rem;
 
   @media screen and (max-width: 600px) {
-    font-size: 1.5rem;
-    align-content: center;
+    font-size: 1.2rem;
+    margin-top: 3rem;
   }
 `;
 
-const h1 = styled.h1``;
+const h1 = styled.h1`
+  text-align: center;
+
+  @media screen and (max-width: 600px) {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+`;
 
 const RegisterBlock = styled.div`
   font-size: 25px;
@@ -23,42 +35,64 @@ const RegisterBlock = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 600px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
     font-size: 1.2rem;
-    align-content: center;
   }
 `;
 
 const RegisterBtn = styled.button`
   margin-left: 10px;
   width: 100px;
-  height: 52px;
   height: 45px;
   border: none;
-  color: #555555;
+  color: #9b9999;
   font-size: 17px;
   letter-spacing: 1px;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
-    background: #5f9cec;
+    background: #7aacef;
     color: #fff;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 30vw;
+    height: 10vw;
+    align-self: center;
+    margin-bottom: 1rem;
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph1 = styled.p`
+  text-align: center;
+  margin-bottom: 2rem;
+
+  @media screen and (max-width: 600px) {
+    margin-bottom: 0;
+  }
+`;
+
+const Paragraph2 = styled.p`
   text-align: center;
 `;
 // END STYLING COMPONENTS
+// ----------------------
+
+
 
 export default function Header(props) {
   return (
     <Head>
       <h1>Find Sport Partners</h1>
       <RegisterBlock>
-        <Paragraph>Let others know about youself</Paragraph>
+        <Paragraph1>Let others know about youself</Paragraph1>
         <RegisterBtn onClick={props.changeToLightTheme}>Register</RegisterBtn>
       </RegisterBlock>
-      <Paragraph>Type sport name and your city </Paragraph>
+      <Paragraph2>Type sport name and your city </Paragraph2>
     </Head>
   );
 }

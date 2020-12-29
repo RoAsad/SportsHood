@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FaBasketballBall, FaBars } from "react-icons/fa";
+import { FaBasketballBall } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
@@ -27,6 +28,14 @@ export const NavbarLogo = styled(Link)`
     left: 0;
     transform: translate(25%, 50%);
   }
+
+  @media screen and (max-width: 600px) {
+    font-size: 1.4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-5%, 60%);
+  }
 `;
 
 export const NavbarIcon = styled(FaBasketballBall)`
@@ -47,7 +56,7 @@ export const BurgerMenuIcon = styled.div`
   }
 `;
 
-export const MenuCloseIcon = styled(FaBars)`
+export const MenuCloseIcon = styled(AiOutlineMenu)`
   display: none;
 `;
 
@@ -60,6 +69,7 @@ export const NavbarMenu = styled.ul`
   width: 70vw;
   justify-content: end;
   margin-right: 2rem;
+  transition: all 0.5s ease;
 
   @media screen and (max-width: 960px) {
     display: flex;
@@ -70,7 +80,6 @@ export const NavbarMenu = styled.ul`
     top: 90px;
     left: ${({ clickBurgerMenu }) => (clickBurgerMenu ? 0 : "-100%")};
     opacity: 1;
-    transition: all 0.5s ease;
     background: #7aacef;
     padding-top: 3rem;
   }
