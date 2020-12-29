@@ -1,6 +1,6 @@
 import React from "react";
 import InputForm from "../components/InputForm";
-import Header from "../components/Header";
+import { Header } from "../components";
 
 export default function Homepage() {
   return (
