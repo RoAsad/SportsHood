@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
+import Modal from "../Modal/Modal";
+// import Select from "react-select";
+// import sports from "../Sports.json";
+// import cities from "../Cities.json";
+import SelectSport from "./SelectSport";
+// import SelectCity from "./SelectCity";
+import GoogleMap from "./GoogleMap";
 
 // STYLING COMPONENTS
 const Form = styled.form`
@@ -25,18 +32,36 @@ const Form = styled.form`
   }
 `;
 
-const InputSport = styled.input`
-  padding: 0.5rem;
-  font-size: 2rem;
+const InputSport = styled.div`
+  /* padding: 0.6rem;
+  font-size: 1rem;
   border: none;
   background: white;
+  width: 260px;
+  margin-top: 20px;
 
+  .css-1okebmr-indicatorSeparator {
+  } */
+
+  input {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: rgb(211, 208, 208) solid 0.5px;
+    background: white;
+    width: 240px;
+    border-radius: 3px;
+    color: rgb(211, 208, 208);
+    font-family: "Poppins", sans-serif;
+  }
   ::placeholder {
     color: rgb(211, 208, 208);
   }
 
   @media screen and (max-width: 960px) {
-    width: 60vw;
+    width: 70vw;
+    input {
+      width: 68vw;
+    }
 
     ::placeholder {
       text-align: center;
@@ -45,8 +70,14 @@ const InputSport = styled.input`
 
   @media screen and (max-width: 600px) {
     width: 80vw;
-    padding: 0.4rem;
+    padding: 0.3rem;
     font-size: 2rem;
+
+    input {
+      width: 78vw;
+      padding: 0.5rem;
+      font-size: 2rem;
+    }
 
     ::placeholder {
       text-align: center;
@@ -55,36 +86,36 @@ const InputSport = styled.input`
   }
 `;
 
-const InputCity = styled.input`
-  padding: 0.5rem;
-  font-size: 2rem;
-  border: none;
-  background: white;
-  width: 20vw;
+// const InputCity = styled.input`
+//   padding: 0.5rem;
+//   font-size: 2rem;
+//   border: none;
+//   background: white;
+//   width: 200px;
 
-  ::placeholder {
-    color: rgb(211, 208, 208);
-  }
+//   ::placeholder {
+//     color: rgb(211, 208, 208);
+//   }
 
-  @media screen and (max-width: 960px) {
-    width: 60vw;
+//   @media screen and (max-width: 960px) {
+//     width: 60vw;
 
-    ::placeholder {
-      text-align: center;
-    }
-  }
+//     ::placeholder {
+//       text-align: center;
+//     }
+//   }
 
-  @media screen and (max-width: 600px) {
-    width: 80vw;
-    padding: 0.4rem;
-    font-size: 2rem;
+//   @media screen and (max-width: 600px) {
+//     width: 80vw;
+//     padding: 0.4rem;
+//     font-size: 2rem;
 
-    ::placeholder {
-      text-align: center;
-      font-size: 1.3rem;
-    }
-  }
-`;
+//     ::placeholder {
+//       text-align: center;
+//       font-size: 1.3rem;
+//     }
+//   }
+// `;
 
 const BtnGetMatch = styled.button`
   padding: 0.5rem;
@@ -110,25 +141,21 @@ const BtnGetMatch = styled.button`
     width: 80vw;
   }
 `;
+
 // END STYLING COMPONENTS
 // ----------------------
 
+export default function InputForm(props) {
+  const [showModal, setModal] = useState(false);
 
-export default function InputForm() {
+  const openModal = () => {
+    setModal((prev) => !prev);
+  };
+
   return (
     <Form>
-      <div>
-        <InputSport type="text" placeholder="sport" name="search" />
-      </div>
-
-      <div>
-        <InputCity
-          className="search-city"
-          type="text"
-          placeholder="city"
-          name="search"
-        />
-      </div>
+      <SelectSport />
+      <GoogleMap />
 
       <div>
         <BtnGetMatch>Get your match</BtnGetMatch>

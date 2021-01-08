@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import Modal from "../Modal/Modal";
+import InputForm from "../InputForm/InputForm";
 import { FaBasketballBall } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -13,39 +16,43 @@ import {
   NavbarLogin,
 } from "./NavbarStyled";
 
-const Navbar = () => {
+const Navbar = ({ showModal, setModal, closeModal, openModal }) => {
   const [clickBurgerMenu, setClickBurgerMenu] = useState(false);
 
   const handleClick = () => setClickBurgerMenu(!clickBurgerMenu);
 
   return (
-    <Nav>
-      <NavbarLogo to="/">
-        SportsHood <NavbarIcon></NavbarIcon>
-      </NavbarLogo>
+    <>
+      <Modal showModal={showModal} setModal={setModal} />
 
-      <BurgerMenuIcon onClick={handleClick}>
-        {clickBurgerMenu ? <FaTimes /> : <AiOutlineMenu />}
-      </BurgerMenuIcon>
+      <Nav showModal={showModal} setModal={setModal}>
+        <NavbarLogo to="/">
+          SportsHood <NavbarIcon></NavbarIcon>
+        </NavbarLogo>
 
-      <NavbarMenu onClick={handleClick} clickBurgerMenu={clickBurgerMenu}>
-        <NavbarItem>
-          <NavbarLinks to="/">Home</NavbarLinks>
-        </NavbarItem>
+        <BurgerMenuIcon onClick={handleClick}>
+          {clickBurgerMenu ? <FaTimes /> : <AiOutlineMenu />}
+        </BurgerMenuIcon>
 
-        <NavbarItem>
-          <NavbarLinks to="/register">Register</NavbarLinks>
-        </NavbarItem>
+        <NavbarMenu onClick={handleClick} clickBurgerMenu={clickBurgerMenu}>
+          <NavbarItem>
+            <NavbarLinks to="/">Home</NavbarLinks>
+          </NavbarItem>
 
-        <NavbarItem>
-          <NavbarLinks to="/results">Results</NavbarLinks>
-        </NavbarItem>
+          <NavbarItem>
+            <NavbarLinks onClick={openModal}>Register</NavbarLinks>
+          </NavbarItem>
 
-        <NavbarItem>
-          <NavbarLogin>Log in</NavbarLogin>
-        </NavbarItem>
-      </NavbarMenu>
-    </Nav>
+          <NavbarItem>
+            <NavbarLinks to="/">Results</NavbarLinks>
+          </NavbarItem>
+
+          <NavbarItem>
+            <NavbarLogin>Log in</NavbarLogin>
+          </NavbarItem>
+        </NavbarMenu>
+      </Nav>
+    </>
   );
 };
 
