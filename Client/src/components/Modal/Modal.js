@@ -5,7 +5,6 @@ import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
 import SelectSport from "../InputForm/SelectSport";
 import SelectCity from "../InputForm/SelectCity";
-// import { SelectSport } from "../components";
 import GoogleMap from "../InputForm/GoogleMap";
 
 // STYLING COMPONENTS
@@ -142,7 +141,7 @@ const InputSport = styled.div`
 // END STYLING COMPONENTS
 // ======================
 
-const Modal = ({ showModal, setModal, closeModal, openModal }) => {
+const Modal = ({ showModal, setModal, openModal}) => {
   const modalRef = useRef();
 
   const animation = useSpring({
@@ -152,6 +151,13 @@ const Modal = ({ showModal, setModal, closeModal, openModal }) => {
     opacity: showModal ? 1 : 0,
     transform: showModal ? `translateX(0%)` : `translateX(-100%)`,
   });
+
+  const closeModal = e => {
+    if(modalRef.current === e.target){
+        setModal(false);
+    }
+};
+
 
   const keyPress = useCallback(
     (e) => {

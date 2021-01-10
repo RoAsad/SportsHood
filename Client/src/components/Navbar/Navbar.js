@@ -20,34 +20,50 @@ import {
   NavbarLogin,
 } from "./NavbarStyled";
 
-const Container = styled.div`
-display:flex;
-`;
+// const Container = styled.div`
+// display:flex;
+// `;
 
-const Button = styled.button`
-min-width:100px;
-background: pink;
-`;
+// const Button = styled.button`
+// min-width:100px;
+// background: pink;
+// `;
 
-const Navbar = () => {
+const Navbar = ({
+  showModal, 
+  setModal, 
+  closeModal, 
+  openModal,
+
+  showLogin,
+  setShowLogin,
+  openLogin,
+  closeLogin
+
+}) => {
+
   const [clickBurgerMenu, setClickBurgerMenu] = useState(false);
 
   const handleClick = () => setClickBurgerMenu(!clickBurgerMenu);
 
 
-  const [showModal, setShowModal] = useState(false)
-  const [showLogin, setShowLogin] = useState(false)
-  const openModal = () =>{
-    setShowModal(prev => !prev)
+  {
+//   //FUNCTIONS AND STATES FOR LOGIN-MODAL
+//   const [showLogin, setShowLogin] = useState(false)
+ 
+//   const openLogin = () =>{
+//     setShowLogin(prev => !prev)
+//   }
+//   // END FUNCTIONS AND STATES FOR LOGIN-MODAL
+// }
   }
-  const openLogin = () =>{
-    setShowLogin(prev => !prev)
-  }
-
   return (
     <>
-    <Modal showModal ={showModal} setShowModal= {setShowModal}/>
+    <Modal showModal ={showModal} setModal= {setModal}/>
+
     <Login showLogin ={showLogin} setShowLogin={setShowLogin}/>
+
+
     <Nav>
       <NavbarLogo to="/">
         SportsHood <NavbarIcon></NavbarIcon>

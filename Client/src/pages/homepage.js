@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { InputForm, Modal } from "../components";
+import { Login } from "../components/Login";
+
 
 // STYLING COMPONENTS
 // ==================
@@ -93,6 +95,7 @@ export default function Homepage({
   setModal,
   closeModal,
   openModal,
+  showLogin
 }) {
   return (
     <>
@@ -109,6 +112,7 @@ export default function Homepage({
         </Head>
 
         {showModal ? null : <InputForm />}
+
       </HomepageStyle>
     </>
   );
