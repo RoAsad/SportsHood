@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ResultPage from "./pages/resultpage";
 import styled from "styled-components";
 import "./App.css";
-import { Modal } from "./components/Modal";
+import { Modal } from "./components/Login";
 import { GlobalStyle } from "./components/globalStyles";
 
 const Container = styled.div`
@@ -22,7 +22,6 @@ export default function App() {
 
   const openModal = () =>{
     setShowModal(prev => !prev)
-
   }
 
   return (

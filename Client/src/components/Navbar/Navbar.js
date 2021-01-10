@@ -5,7 +5,7 @@ import InputForm from "../InputForm/InputForm";
 import { FaBasketballBall } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-// import { Modal } from "/Users/Victor/Downloads/sportHood11/SportsHood/Client/src/components/Modal.js";
+import { Login } from "../Login.js";
 import { GlobalStyle } from "../globalStyles.js";
 import { Link } from "react-router-dom";
 
@@ -36,13 +36,18 @@ const Navbar = () => {
 
 
   const [showModal, setShowModal] = useState(false)
+  const [showLogin, setShowLogin] = useState(false)
   const openModal = () =>{
     setShowModal(prev => !prev)
+  }
+  const openLogin = () =>{
+    setShowLogin(prev => !prev)
   }
 
   return (
     <>
     <Modal showModal ={showModal} setShowModal= {setShowModal}/>
+    <Login showLogin ={showLogin} setShowLogin={setShowLogin}/>
     <Nav>
       <NavbarLogo to="/">
         SportsHood <NavbarIcon></NavbarIcon>
@@ -59,7 +64,7 @@ const Navbar = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <NavbarLinks to="/register">Register</NavbarLinks>
+          <NavbarLinks onClick={openModal} to="/register">Register</NavbarLinks>
         </NavbarItem>
 
         <NavbarItem>
@@ -67,7 +72,7 @@ const Navbar = () => {
         </NavbarItem>
 
         <NavbarItem>
-          <NavbarLogin onClick={openModal}> Log in </NavbarLogin>
+          <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
         </NavbarItem>
       </NavbarMenu>
     </Nav>

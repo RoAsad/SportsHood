@@ -99,29 +99,39 @@ align-self:center;
 overflow: hidden;
 `;
 
+const LoginGoogle = styled.a
+`
+    padding: 10px 24px; 
+    color: white;
+    /* color: #fff; */
+    border: none;
+    background: rgb(110, 94, 254);
+    font-size: 18px;
+    text-decoration: none;
+`
 
-export const Modal = ({showModal, setShowModal}) => {
+export const Login = ({showLogin, setShowLogin}) => {
     const modalRef =useRef()
 
     const animation = useSpring({
         config:{
             duration:250
         },
-        opacity: showModal ? 1 : 0,
-        transform: showModal ? 'translateX(0%)' : 'translateX(-100%)'
+        opacity: showLogin ? 1 : 0,
+        transform: showLogin ? 'translateX(0%)' : 'translateX(-100%)'
     });
 
     const closeModal = e => {
         if(modalRef.current === e.target){
-            setShowModal(false);
+            setShowLogin(false);
         }
     };
 
     const keyPress = useCallback(e =>{
-        if(e.key === 'Escape' && showModal){
-            setShowModal(false)
+        if(e.key === 'Escape' && showLogin){
+            setShowLogin(false)
         }
-    }, [setShowModal, showModal]
+    }, [setShowLogin, showLogin]
     );
 
     useEffect(
@@ -134,17 +144,17 @@ export const Modal = ({showModal, setShowModal}) => {
 
     return(
        <>
-        {showModal ? (
+        {showLogin ? (
             <Background ref={modalRef} onClick={closeModal}>
                 <animated.div style={animation}>
-                    <ModalWrapper id = "root" showModal={showModal}>
+                    <ModalWrapper id = "root" showLogin={showLogin}>
                         {/* <ModalImg src ={require("./modall.jpg")} alt="camera"/>  */}
                         <Image><ModalImg src= {modal}/></Image>
                         <ModalContent>
                             <h1>WELCOME</h1>
-                            <button>Log In with Google</button>
+                            <LoginGoogle href="http://localhost:8080/signIn">Log In with Google</LoginGoogle>
                         </ModalContent> 
-                        <CloseModalButton aria-label = 'Close modal' onClick={() => setShowModal(prev=> !prev)} />
+                        <CloseModalButton aria-label = 'Close modal' onClick={() => setShowLogin(prev=> !prev)} />
                     </ModalWrapper>
                 </animated.div>
             </Background>
