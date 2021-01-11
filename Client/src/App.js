@@ -53,16 +53,20 @@ export default function App() {
         openLogin={openLogin}
       />
 
-      <Route path="/">
-        <Homepage
+      {
+      // <Route path="/">
+      } 
+      <Homepage
           openModal={openModal}
           showModal={showModal}
           setModal={setModal}
           modalRef={modalRef}
-          auther={true}
+          showLogin={showLogin}
+          // auther={true}
         />
-      </Route>
-
+      {
+      // </Route>
+      }
       {
         // <Route path = "/" exact component={Homepage}/>
         // <Route path = "/results" component ={ResultPage}/>

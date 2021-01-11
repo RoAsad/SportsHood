@@ -12,7 +12,7 @@ const Background = styled.div`
     justify-content: center;
     align-items: center;
     /* filter: blur(2px); */
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
 `;
 
 // For Login part (right half of the popUp)

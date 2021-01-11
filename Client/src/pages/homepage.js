@@ -111,7 +111,7 @@ export default function Homepage({
           <Paragraph2>Type sport name and your city </Paragraph2>
         </Head>
 
-        {showModal ? null : <InputForm />}
+        {showModal || showLogin ? null : <InputForm />}
 
       </HomepageStyle>
     </>

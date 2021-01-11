@@ -51,7 +51,6 @@ const BtnGetMatch = styled.button`
     width: 80vw;
   }
 `;
-
 // END STYLING COMPONENTS
 // ----------------------
 
