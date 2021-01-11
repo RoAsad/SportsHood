@@ -4,21 +4,17 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+// import TextField from "@material-ui/core/TextField";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
 
-export default function GoogleMap() {
+export default function GoogleMap({ setCityData }) {
   const [address, setAddress] = React.useState("");
-  const [coordinates, setCoordinates] = React.useState({
-    lat: null,
-    lng: null,
-  });
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setAddress(value);
-    setCoordinates(latLng);
+    setCityData(value);
   };
 
   return (
@@ -38,11 +34,9 @@ export default function GoogleMap() {
               {suggestions.map((suggestion) => {
                 const style = {
                   backgroundColor: suggestion.active ? "##d8f0f0" : "#fff",
-                  width: 
-                  suggestion.active ?
-                  "300px" : "300px",
+                  width: suggestion.active ? "300px" : "300px",
                   padding: "10px",
-                  color: "#b4aeae"
+                  color: "#b4aeae",
                 };
 
                 return (

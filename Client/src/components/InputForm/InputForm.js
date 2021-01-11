@@ -55,19 +55,68 @@ const BtnGetMatch = styled.button`
 // ----------------------
 
 export default function InputForm(props) {
-  const [showModal, setModal] = useState(false);
+  const [sportData, setSportData] = useState("");
 
-  const openModal = () => {
-    setModal((prev) => !prev);
+  const [cityData, setCityData] = useState("");
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    alert(sportData);
+    alert(cityData);
+
+
+
+
+//HANDLE POST REQUEST
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sport: sportData, city: cityData}),
+    };
+
+    /*      
+    I expect to recieve data in form of:
+    [
+      {name: 'name', 
+      city: 'city', 
+      sport: 'aaa', 
+      email: 'amail@amail.com', 
+      img: 'url' },
+      
+      {name: 'name', 
+      city: 'city', 
+      sport: 'aaa2', 
+      email: 'amail@amail.com2', 
+      img: 'url2' },
+    ]
+
+    OR
+
+    if [] then I display message "NO MATCH"
+  
+    */
+
+
+    fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+      .then((response) => response.json())
+      // .then((data) => this.setState({ postId: data.id }));
+
+      .then((data) => alert(data));
   };
 
+//END HANDLE POST REQUEST
+
+
+
   return (
-    <Form>
-      <SelectSport />
-      <GoogleMap />
+    <Form onSubmit={handleSubmit}>
+      <SelectSport setSportData={setSportData} />
+
+      <GoogleMap setCityData={setCityData}/>
 
       <div>
-        <BtnGetMatch>Get your match</BtnGetMatch>
+        <BtnGetMatch type="submit">Get your match</BtnGetMatch>
       </div>
     </Form>
   );
