@@ -187,9 +187,6 @@ const Modal = ({ showModal, setModal, openModal}) => {
                 <InputSport>
                   <SelectSport
                     placeholder="Sport"
-                    components={{
-                      indicatorSeparator: (styles) => ({ display: "none" }),
-                    }}
                   />
                 </InputSport>
 
