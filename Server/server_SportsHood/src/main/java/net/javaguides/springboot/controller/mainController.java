@@ -32,6 +32,7 @@ public class mainController {
 	@PostMapping(path = "/registerUser", consumes = "application/json", produces = "application/json")
 	public boolean registerUser(@RequestBody  AvailableUsers availableUser)
 	{
+		System.out.println("1st: YOYO  ***********************" + availableUser);
 		String sportsName = availableUser.getSportsName();
 		String city = availableUser.getCity(); 
 		String userId = availableUser.getUserId(); 
@@ -39,6 +40,7 @@ public class mainController {
 		boolean exists = availableUserRepository.existsAvailableUserBySportsNameAndCityAndUserId(sportsName, city, userId);
     	if(!exists)
     		availableUserRepository.save(availableUser); 
+    	System.out.println("YOYO ****************");
 		return exists; 
 	}
 	

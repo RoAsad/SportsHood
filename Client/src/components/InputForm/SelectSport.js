@@ -1,15 +1,11 @@
-import React,  { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Select from "react-select";
 import sports from "../Sports.json";
 
-
-
-
-
-
-
-function SelectSport(props) { 
+function SelectSport({ setSportData }) {
   
+  
+
   const customStyles = useMemo(
     () => ({
       option: (provided, state) => ({
@@ -25,26 +21,27 @@ function SelectSport(props) {
       singleValue: (provided, state) => ({
         ...provided,
         color: state.data.color,
-        
       }),
-      
     }),
     []
   );
-  
 
   return (
     <div>
-    
-      <Select name="sports"
+      <Select
+        name="sports"
         placeholder="Sport"
         options={sports}
         styles={customStyles}
         components={{
-  IndicatorSeparator: () => null
-}}
-        />
-    
+          IndicatorSeparator: () => null,
+        }}
+
+        onChange={(e) => {
+          const selectedSport = e.value;
+          setSportData(selectedSport);
+        }}
+      />
     </div>
   );
 }
