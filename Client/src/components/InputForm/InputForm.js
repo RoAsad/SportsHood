@@ -73,9 +73,18 @@ export default function InputForm(props) {
     // curl -d '{sportsName: sportData, city: cityData}' -H 'Content-Type: application/json' http://localhost:8080/api/v1/registerUser;
     const requestOptions = {
       method: "POST",
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+    },
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sportsName: sportData, city: cityData}),
     };
+    // headers('Access-Control-Allow-Origin: your-host');
+    // headers('Access-Control-Allow-Credentials: true');
+    // headers('Access-Control-Allow-Methods: your-methods like POST,GET');
+    // headers('Access-Control-Allow-Headers: content-type or other');
+    // headers('Content-Type: application/json');
 
 //   curl {http://localhost:8080/api/v1/registerUser }-d "{\"city\": cityData, \"sportsName\": sportData"}" -H "Content-Type:application/json"
 // {
@@ -103,15 +112,16 @@ export default function InputForm(props) {
     if [] then I display message "NO MATCH"
   
     */
-
-   
-    fetch("http://localhost:8080/api/v1/registerUser", requestOptions)
+    const url = "http://localhost:8080/api/v1/registerUser"
+   const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    fetch(url, requestOptions)
       .then((response) => response.json())
       // .then((data) => this.setState({ postId: data.id }));
 
       .then((data) => {
         console.log("You have been registered \n\n\n\n\n\n\n\n\n\n\n\n"); 
-      });
+      })
+      .catch(() => console.log("Can’t access " + "http://localhost:8080/api/v1/registerUser" + " response. Blocked by browser?"));
   };
 
 //END HANDLE POST REQUEST
