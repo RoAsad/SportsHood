@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+//IMPORT COMPONENTS
 import Homepage from "./pages/homepage";
 import { Navbar } from "./components";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ResultPage from "./pages/resultpage";
-import styled from "styled-components";
-import "./App.css";
 import { Login } from "./components/Login";
 import Modal from "../src/components/Modal/Modal";
+import ResultPage from "./pages/resultpage";
 import { GlobalStyle } from "./components/globalStyles";
+import styled from "styled-components";
+import "./App.css";
 
 export default function App() {
   const modalRef = useRef();
@@ -28,7 +30,7 @@ export default function App() {
   // END MODULE-LOG  STATES, FUNCTIONS
 
   return (
-    <Router>
+    <BrowserRouter>
       <Modal
         openModal={openModal}
         showModal={showModal}
@@ -53,24 +55,21 @@ export default function App() {
         openLogin={openLogin}
       />
 
-      {
-      // <Route path="/">
-      } 
-      <Homepage
-          openModal={openModal}
-          showModal={showModal}
-          setModal={setModal}
-          modalRef={modalRef}
-          showLogin={showLogin}
-          // auther={true}
-        />
-      {
-      // </Route>
-      }
-      {
-        // <Route path = "/" exact component={Homepage}/>
-        // <Route path = "/results" component ={ResultPage}/>
-      }
-    </Router>
+      <Switch>
+        <Route path="/" exact>
+          <Homepage
+            openModal={openModal}
+            showModal={showModal}
+            setModal={setModal}
+            modalRef={modalRef}
+            showLogin={showLogin}
+          />
+        </Route>
+
+        <Route path="/results">
+          <ResultPage />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }

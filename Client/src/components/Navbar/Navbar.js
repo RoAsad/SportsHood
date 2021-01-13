@@ -7,7 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Login } from "../Login.js";
 import { GlobalStyle } from "../globalStyles.js";
-import { Link } from "react-router-dom";
+
 
 import {
   Nav,
@@ -50,7 +50,7 @@ const Navbar = ({
   {
 //   //FUNCTIONS AND STATES FOR LOGIN-MODAL
 //   const [showLogin, setShowLogin] = useState(false)
- 
+
 //   const openLogin = () =>{
 //     setShowLogin(prev => !prev)
 //   }
@@ -59,7 +59,7 @@ const Navbar = ({
   }
   return (
     <>
-    <Modal showModal ={showModal} setModal= {setModal}/>
+   
 
     <Login showLogin ={showLogin} setShowLogin={setShowLogin}/>
 
@@ -80,7 +80,7 @@ const Navbar = ({
         </NavbarItem>
 
         <NavbarItem>
-          <NavbarLinks onClick={openModal} to="/register">Register</NavbarLinks>
+          <NavbarLinks onClick={openModal} to="/">Register</NavbarLinks>
         </NavbarItem>
 
         <NavbarItem>
