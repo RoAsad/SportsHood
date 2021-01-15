@@ -33,7 +33,6 @@ public class mainController {
 	@PostMapping(path = "/registerUser", consumes = "application/json", produces = "application/json")
 	public boolean registerUser(@RequestBody  AvailableUsers availableUser)
 	{
-		System.out.println("1st: YOYO  ***********************" + availableUser);
 		String sportsName = availableUser.getSportsName();
 		String city = availableUser.getCity(); 
 		String userId = availableUser.getUserId(); 
@@ -41,20 +40,14 @@ public class mainController {
 		boolean exists = availableUserRepository.existsAvailableUserBySportsNameAndCityAndUserId(sportsName, city, userId);
     	if(!exists)
     		availableUserRepository.save(availableUser); 
-    	System.out.println("YOYO ****************");
 		return exists; 
 	}
 	
-//	@GetMapping("/findAvailableUsers")
-//	public List<AvailableUsers> findAvailableUsers(@RequestParam(defaultValue= "sportsName") String sportsName, @RequestParam(defaultValue= "city")  String city)
-//	{
-//		System.out.println("sports name " + sportsName);
-//		System.out.println("city " + city);
-////		List<AvailableUsers> availableusers=  new AvailableUsers();
-//		return availableUserRepository.findAllBySportsNameAndCity(sportsName, city); 
-//		System.out.println("------- " + availableusers); 
-////		System.out.println("------- " + availableusers.getSportsName());  
-//		return availableusers; 
-//	}
-//	
+	@GetMapping("/findAvailableUsers")
+	public  List<AvailableUsers> findAvailableUsers(@RequestParam(defaultValue= "sportsName") String sportsName, @RequestParam(defaultValue= "city")  String city)
+	{
+		System.out.println(sportsName + city);
+		return availableUserRepository.findAvailableUserBySportsNameAndCity(sportsName,city);
+	}
+	
 }
