@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "../Modal/Modal";
-import InputForm from "../InputForm/InputForm";
+import Modal from "../Modal/ModalRegistr";
+import InputForm from "../InputForm/InputFormRegistr";
 import { FaBasketballBall } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -18,80 +18,89 @@ import {
   NavbarItem,
   NavbarLinks,
   NavbarLogin,
+  NavbarLogOut 
 } from "./NavbarStyled";
 
-// const Container = styled.div`
-// display:flex;
-// `;
-
-// const Button = styled.button`
-// min-width:100px;
-// background: pink;
-// `;
-
-const Navbar = ({
-  showModal, 
-  setModal, 
-  closeModal, 
-  openModal,
-
-  showLogin,
+const Navbar = ({ 
+  openModal, 
+  showLogin, 
   setShowLogin,
   openLogin,
-  closeLogin
+  openModalUserInfo,
+  modalUserInfo,
+  setModalUserInfo,
+  setLoggedIn,
+  loggedIn
 
 }) => {
 
   const [clickBurgerMenu, setClickBurgerMenu] = useState(false);
 
-  const handleClick = () => setClickBurgerMenu(!clickBurgerMenu);
+  const handleClickBurgerMenu = () => setClickBurgerMenu(!clickBurgerMenu);
 
-
-  {
-//   //FUNCTIONS AND STATES FOR LOGIN-MODAL
-//   const [showLogin, setShowLogin] = useState(false)
-
-//   const openLogin = () =>{
-//     setShowLogin(prev => !prev)
-//   }
-//   // END FUNCTIONS AND STATES FOR LOGIN-MODAL
-// }
-  }
+ 
   return (
     <>
-   
+      <Login 
+      showLogin={showLogin} 
+      setShowLogin={setShowLogin}
+      setLoggedIn={setLoggedIn} />
 
-    <Login showLogin ={showLogin} setShowLogin={setShowLogin}/>
+      <Nav>
+        <NavbarLogo to="/">
+          SportsHood <NavbarIcon></NavbarIcon>
+        </NavbarLogo>
+
+        <BurgerMenuIcon onClick={handleClickBurgerMenu}>
+          {clickBurgerMenu ? <FaTimes /> : <AiOutlineMenu />}
+        </BurgerMenuIcon>
+
+        <NavbarMenu onClick={handleClickBurgerMenu} clickBurgerMenu={clickBurgerMenu}>
+          <NavbarItem>
+            <NavbarLinks to="/">Home</NavbarLinks>
+          </NavbarItem>
+
+          <NavbarItem>
+            {
+              // if (loggedIn){
+            }
+            <NavbarLinks onClick={openModal} to="/">
+              Register
+            </NavbarLinks>
+            {
+              //}else {
+                //OPEN MODAL 2 WITH PHRASE "YOU SHOULD LOG IN FIRST"
+            }
+          </NavbarItem>
+
+          <NavbarItem>
+            <NavbarLinks to="/results">Results</NavbarLinks>
+          </NavbarItem>
 
 
-    <Nav>
-      <NavbarLogo to="/">
-        SportsHood <NavbarIcon></NavbarIcon>
-      </NavbarLogo>
+          <NavbarItem>
+            {
+          <NavbarLogOut onClick={openModalUserInfo}>L
+          </NavbarLogOut>
+            }
+            {
+              // IF LOGGED IN:
+                //if (loggedIn) {
+                  
+                  // <NavbarLogOut 
+                  // onClick={openLogout}
+                  // setLoggedIn={setLoggedIn}
+                  // loggedIn={loggedIn} />
+                  //} else {
+            }
+            {
+            // <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
+            }
 
-      <BurgerMenuIcon onClick={handleClick}>
-        {clickBurgerMenu ? <FaTimes /> : <AiOutlineMenu />}
-      </BurgerMenuIcon>
 
-      <NavbarMenu onClick={handleClick} clickBurgerMenu={clickBurgerMenu}>
-        <NavbarItem>
-          <NavbarLinks to="/">Home</NavbarLinks>
-          
-        </NavbarItem>
-
-        <NavbarItem>
-          <NavbarLinks onClick={openModal} to="/">Register</NavbarLinks>
-        </NavbarItem>
-
-        <NavbarItem>
-          <NavbarLinks to="/results">Results</NavbarLinks>
-        </NavbarItem>
-
-        <NavbarItem>
-          <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
-        </NavbarItem>
-      </NavbarMenu>
-    </Nav>
+          </NavbarItem>
+        </NavbarMenu>
+      </Nav>
     </>
   );
 };

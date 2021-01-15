@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Axios from "axios";
 
 //IMPORT COMPONENTS
 import Homepage from "./pages/homepage";
 import { Navbar } from "./components";
+
 import { Login } from "./components/Login";
-import Modal from "../src/components/Modal/Modal";
+import ModalRegistr from "./components/Modal/ModalRegistr";
 import ResultPage from "./pages/resultpage";
-import { GlobalStyle } from "./components/globalStyles";
-import styled from "styled-components";
 import "./App.css";
 
 export default function App() {
@@ -16,10 +16,19 @@ export default function App() {
 
   //MODULE-REG  STATES, FUNCTIONS
   const [showModal, setModal] = useState(false);
+  const [modalUserInfo, setModalUserInfo] = useState(false);
 
   const openModal = () => {
     setModal((prev) => !prev);
   };
+
+  const openModalUserInfo = () => {
+    alert("Window about the user");
+    setModalUserInfo((prev) => !prev);
+  };
+
+  //LOG IN STATE
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // MODULE-LOG  STATES, FUNCTIONS
   const [showLogin, setShowLogin] = useState(false);
@@ -29,13 +38,28 @@ export default function App() {
   };
   // END MODULE-LOG  STATES, FUNCTIONS
 
+  //HANDLE LOGIN FUNCTION
+
+  const handleLogin = () => {
+    Axios.get("").then((response) => {
+      console.log(response.data);
+      if (response.data) {
+        setLoggedIn(true);
+      }
+    });
+  };
+  //END HANDLE LOGIN  FUNCTION
+
   return (
     <BrowserRouter>
-      <Modal
+      <ModalRegistr
         openModal={openModal}
         showModal={showModal}
         setModal={setModal}
         modalRef={modalRef}
+        setLoggedIn={setLoggedIn}
+        loggedIn={loggedIn}
+        handleLogin={handleLogin}
       />
 
       <Login
@@ -43,31 +67,43 @@ export default function App() {
         setShowLogin={setShowLogin}
         openLogin={openLogin}
         modalRef={modalRef}
+        setLoggedIn={setLoggedIn}
+        handleLogin={handleLogin}
       />
 
       <Navbar
         openModal={openModal}
         showModal={showModal}
         setModal={setModal}
+        openModalUserInfo={openModalUserInfo}
+        modalUserInfo={modalUserInfo}
+        setModalUserInfo={setModalUserInfo}
         modalRef={modalRef}
         showLogin={showLogin}
         setShowLogin={setShowLogin}
         openLogin={openLogin}
+        setLoggedIn={setLoggedIn}
+        loggedIn={loggedIn}
       />
 
       <Switch>
         <Route path="/" exact>
           <Homepage
+            modalUserInfo={modalUserInfo}
+            openModalUserInfo={openModalUserInfo}
             openModal={openModal}
             showModal={showModal}
             setModal={setModal}
             modalRef={modalRef}
             showLogin={showLogin}
+            setLoggedIn={setLoggedIn}
+            loggedIn={loggedIn}
+            openLogin={openLogin}
           />
         </Route>
 
         <Route path="/results">
-          <ResultPage />
+          <ResultPage loggedIn={loggedIn} />
         </Route>
       </Switch>
     </BrowserRouter>

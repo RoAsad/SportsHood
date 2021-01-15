@@ -79,6 +79,7 @@ export const NavbarMenu = styled.ul`
     position: absolute;
     top: 90px;
     left: ${({ clickBurgerMenu }) => (clickBurgerMenu ? 0 : "-100%")};
+    z-index: 999 !important;
     opacity: 1;
     background: #7aacef;
     padding-top: 3rem;
@@ -139,6 +140,66 @@ export const NavbarLogin = styled(Link)`
     padding: 1.5rem;
     margin: auto;
     width: 70%;
+    background: rgb(110, 94, 254);
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgb(110, 94, 254) 0%,
+      rgb(123, 109, 245) 70%
+    );
+  }
+`;
+
+
+export const NavbarLogOut  = styled(Link)`
+  margin-left: 100px;
+  color: white;
+  padding: .9rem 1.5rem;
+  border-radius: 50%;
+  background: rgb(110, 94, 254);
+  text-decoration: none;
+  letter-spacing: 1px;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: auto;
+    width: 70%;
+    background: rgb(110, 94, 254);
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+  }
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      rgb(110, 94, 254) 0%,
+      rgb(123, 109, 245) 70%
+    );
+  }
+`;
+
+export const NavbarLogout = styled(Link)`
+  /* margin-left: 100px; */
+  color: white;
+  padding: 0.6rem 1rem;
+  background: #ffff;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 50%;
+  width: 20px;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: auto;
+    width: 20%;
     background: rgb(110, 94, 254);
     text-decoration: none;
     color: #fff;

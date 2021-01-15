@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import SelectSport from "../InputForm/SelectSport";
 import SelectCity from "../InputForm/SelectCity";
 import GoogleMap from "../InputForm/GoogleMap";
+import InputFormReg from "../InputForm/InputFormRegistr";
 
 // STYLING COMPONENTS
 // ==================
@@ -18,6 +19,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999 !important;
 `;
 
 const ModalWrapper = styled.div`
@@ -32,16 +34,25 @@ const ModalWrapper = styled.div`
   z-index: 10;
   border-radius: 5px;
   z-index: 10;
+
+  @media screen and (max-width: 960px) {
+    width: 800px;
+    height: 450px;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 800px;
+    height: 500px;
+  }
 `;
 
-const ModalContent = styled.div`
+const ModalContentInput = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   line-height: 1.8;
   color: #7aacef;
-  background-image: url("./modal.jpg");
   background: "red";
 
   h1 {
@@ -50,28 +61,64 @@ const ModalContent = styled.div`
 
   p {
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 600px) {
+      width: 80vw;
+      text-align: center;
+    }
   }
   button {
     color: white;
-    padding: 0.8rem 1.1rem;
     background: rgb(110, 94, 254);
     text-decoration: none;
     letter-spacing: 1px;
-    width: 400px;
+    width: 350px;
+    height: 60px;
     font-size: 1.5rem;
     border: none;
     font-weight: lighter;
     margin-top: 5rem;
     margin-bottom: 10rem;
     font-family: "Poppins", sans-serif;
+
+    @media screen and (max-width: 960px) {
+      width: 80vw;
+    }
   }
 `;
 
-const ModalImg = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  background: #000;
+const ModalContentMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.8;
+  color: #7aacef;
+  padding-top: 140px;
+
+  button {
+      color: white;
+      padding: 0.8rem 1.1rem;
+      background: rgb(110, 94, 254);
+      text-decoration: none;
+      letter-spacing: 1px;
+      width: 400px;
+      font-size: 1.5rem;
+      border: none;
+      font-weight: lighter;
+      margin-top: 5rem;
+      margin-bottom: 10rem;
+      font-family: "Poppins", sans-serif;
+    }
+`;
+
+const LoginGoogle = styled.a`
+  padding: 10px 24px;
+  color: white;
+  border: none;
+  background: rgb(110, 94, 254);
+  font-size: 18px;
+  text-decoration: none;
 `;
 
 const CloseModalButton = styled(MdClose)`
@@ -91,9 +138,6 @@ const InputSport = styled.div`
   border: none;
   background: white;
   width: 281px;
-
-  .css-1okebmr-indicatorSeparator {
-  }
 
   input {
     padding: 0.9rem;
@@ -126,7 +170,7 @@ const InputSport = styled.div`
     font-size: 2rem;
 
     input {
-      width: 78vw;
+      width: 80vw;
       padding: 0.5rem;
       font-size: 2rem;
     }
@@ -141,7 +185,7 @@ const InputSport = styled.div`
 // END STYLING COMPONENTS
 // ======================
 
-const Modal = ({ showModal, setModal, openModal}) => {
+const Modal = ({ showModal, setModal, setLoggedIn, loggedIn, handleLogin }) => {
   const modalRef = useRef();
 
   const animation = useSpring({
@@ -152,12 +196,11 @@ const Modal = ({ showModal, setModal, openModal}) => {
     transform: showModal ? `translateX(0%)` : `translateX(-100%)`,
   });
 
-  const closeModal = e => {
-    if(modalRef.current === e.target){
-        setModal(false);
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      setModal(false);
     }
-};
-
+  };
 
   const keyPress = useCallback(
     (e) => {
@@ -180,22 +223,28 @@ const Modal = ({ showModal, setModal, openModal}) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation} closeModal={closeModal}>
             <ModalWrapper showModal={showModal}>
-              <ModalContent>
-                <h1>Are you ready?</h1>
-                <p>Let others know about what sport you practice</p>
+              {
+                //if (loggedIn){
+              }
 
-                <InputSport>
-                  <SelectSport
-                    placeholder="Sport"
-                  />
-                </InputSport>
-
-                <InputSport>
-                  <GoogleMap />
-                </InputSport>
-
-                <button>Submit</button>
-              </ModalContent>
+              
+                <ModalContentInput>
+                  <h1>Are you ready?</h1>
+                  <p>Let others know about what sport you practice</p>
+                <InputFormReg />
+                </ModalContentInput>
+              
+              {
+              // <ModalContentMessage>
+              //   <h1>Please, login first</h1>
+              //   <LoginGoogle
+              //     onClick={handleLogin}
+              //     href="http://localhost:8080/signIn"
+              //   >
+              //     Log In with Google
+              //   </LoginGoogle>
+              // </ModalContentMessage>
+              }
               <CloseModalButton
                 aria-label="Close modal"
                 onClick={() => setModal((prev) => !prev)}

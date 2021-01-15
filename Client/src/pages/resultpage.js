@@ -42,10 +42,10 @@ padding-right: 200px;
 `;
 
 
-export default function ResultPage() {
+export default function ResultPage( {loggedIn, }) {
     return(
         
-         <Div>
+        <Div>
             <Div>
             {/* <Div1><Images/></Div1> */}
             <Images/>

@@ -1,11 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import Select from "react-select";
 import sports from "../Sports.json";
 
 function SelectSport({ setSportData }) {
   
-  
-
   const customStyles = useMemo(
     () => ({
       option: (provided, state) => ({
@@ -22,9 +20,19 @@ function SelectSport({ setSportData }) {
         ...provided,
         color: state.data.color,
       }),
+      container: (provided, state) => ({
+        ...provided,
+        width: 300,
+        overflow: 'visible'
+      }),
+        indicatorsContainer: (provided, state) => ({
+        ...provided,
+        display: 'none'
+      }),
     }),
     []
   );
+
 
   return (
     <div>
@@ -33,14 +41,6 @@ function SelectSport({ setSportData }) {
         placeholder="Sport"
         options={sports}
         styles={customStyles}
-        components={{
-          IndicatorSeparator: () => null,
-        }}
-
-        onChange={(e) => {
-          const selectedSport = e.value;
-          setSportData(selectedSport);
-        }}
       />
     </div>
   );

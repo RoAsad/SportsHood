@@ -4,17 +4,17 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-// import TextField from "@material-ui/core/TextField";
-// import Autocomplete from "@material-ui/lab/Autocomplete";
+
 
 export default function GoogleMap({ setCityData }) {
   const [address, setAddress] = React.useState("");
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
-    setAddress(value);
+    // const latLng = await getLatLng(results[0]);
     setCityData(value);
+    setAddress(value);
+    
   };
 
   return (
@@ -23,6 +23,7 @@ export default function GoogleMap({ setCityData }) {
         value={address}
         onChange={setAddress}
         onSelect={handleSelect}
+        
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

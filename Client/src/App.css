@@ -20,21 +20,6 @@ form {
   align-items: center;
 }
 
-.location-search-input,
-.location-search-input:focus,
-.location-search-input:active {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  border: honeydew;
-  display: block;
-  width: 100%;
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 2px;
-  outline: none;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
 .autocomplete-dropdown-container {
   border-bottom: honeydew;
   border-left: honeydew;
@@ -54,12 +39,6 @@ form {
   width: 300px;
 }
 
-.css-2b097c-container {
-  width: 300px;
-  border: none;
-  outline: none;
-}
-
 .css-g287j2-control:focus {
   outline: none;
   border-color: yellowgreen;
@@ -71,10 +50,6 @@ form {
   background: #ffff;
   border: none;
   outline: none;
-
-  /* @media screen and (max-width: 960px) {
-     width: 70vw;
-  } */
 }
 
 input {
@@ -83,11 +58,15 @@ input {
   color: #9a9a9a;
   font-family: "Poppins", sans-serif;
   font-size: 15px;
-  border: #e6e6e6 solid 0.5px;
+  border: #cac6c6 solid 0.5px;
   border-radius: 3px;
 
   @media screen and (max-width: 960px) {
     width: 300px;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 78vw;
   }
 }
 

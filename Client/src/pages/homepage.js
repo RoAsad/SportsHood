@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { InputForm, Modal } from "../components";
-import { Login } from "../components/Login";
+import { InputFormSearch } from "../components";
+
 
 
 // STYLING COMPONENTS
@@ -91,11 +91,11 @@ const Paragraph2 = styled.p`
 // ======================
 
 export default function Homepage({
-  showModal,
-  setModal,
-  closeModal,
   openModal,
-  showLogin
+  showLogin,
+  openLogin,
+
+  loggedIn
 }) {
   return (
     <>
@@ -105,13 +105,24 @@ export default function Homepage({
 
           <RegisterBlock>
             <Paragraph1>Let others know about youself</Paragraph1>
+
+
+            {
+              // IF LOGGED IN:
+                  //:
+            }
             <RegisterBtn onClick={openModal}>Register</RegisterBtn>
+            { 
+            // ELSE:
+                  //OPEN MODAL 2 WITH PHRASE "YOU SHOULD LOG IN FIRST"
+            }
+        
           </RegisterBlock>
 
           <Paragraph2>Type sport name and your city </Paragraph2>
         </Head>
 
-        {showModal || showLogin ? null : <InputForm />}
+        {showLogin ? null : <InputFormSearch />}
 
       </HomepageStyle>
     </>
