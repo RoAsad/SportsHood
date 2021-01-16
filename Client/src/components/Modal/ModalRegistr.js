@@ -38,12 +38,12 @@ const ModalWrapper = styled.div`
 
   @media screen and (max-width: 960px) {
     width: 800px;
-    height: 450px;
-  }
-
-  @media screen and (max-width: 960px) {
-    width: 800px;
     height: 500px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    width: 500px;
+    height: 450px;
   }
 `;
 

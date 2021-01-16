@@ -11,6 +11,10 @@ const HomepageStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    margin-top: 4rem;
+  }
 `;
 
 const Head = styled.div`
@@ -21,7 +25,7 @@ const Head = styled.div`
   font-size: 2rem;
 
   @media screen and (max-width: 600px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-top: 3rem;
   }
 `;
@@ -30,10 +34,12 @@ const h1 = styled.h1`
   text-align: center;
 
   @media screen and (max-width: 600px) {
+    
     text-align: center;
     margin-bottom: 2rem;
     padding-left: 2rem;
     padding-right: 2rem;
+  
   }
 `;
 
@@ -74,7 +80,7 @@ const RegisterBtn = styled.button`
   &:hover {
     opacity: 0.2;
   }
-  }
+  
 
   @media screen and (max-width: 600px) {
     width: 30vw;
@@ -89,6 +95,7 @@ const Paragraph1 = styled.p`
   margin-bottom: 2rem;
 
   @media screen and (max-width: 600px) {
+    margin-top: 2rem;
     margin-bottom: 0;
   }
 `;
@@ -110,7 +117,15 @@ background: white;
   border-radius: 50%;
   top: 15%;
   right: -18%;
+
+  @media screen and (max-width: 600px) {
+    height: 14rem;
+    width: 14rem;
+    top: 80%;
+    right: -20%;
+    }
 `
+
 const Circle2 = styled.div`
 background: white;
   background: linear-gradient(
@@ -123,7 +138,19 @@ background: white;
   position: absolute;
   border-radius: 50%;
   bottom: 0%;
-  left: -10%;
+  left: -12%;
+
+  @media screen and (max-width: 600px) {
+    height: 8rem;
+    width: 8rem;
+    background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+  );
+    bottom: 75%;
+    left: -11%;
+    }
 `
 // END STYLING COMPONENTS
 // ======================
@@ -141,7 +168,7 @@ export default function Homepage({
       <Circle1></Circle1>
       <Circle2></Circle2>
         <Head>
-          <h1>Find Sport Partners</h1>
+          <h1>Find Sports Partner</h1>
 
           <RegisterBlock>
             <Paragraph1>Let others know about youself</Paragraph1>

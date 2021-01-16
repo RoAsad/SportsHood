@@ -12,27 +12,27 @@ const Form = styled.form`
   align-items: center;
   line-height: 1.8;
   color: #7aacef;
-  background: "red";
-
+  
   grid-gap: 10px;
   list-style: none;
   text-align: center;
   width: 60vw;
   
-
-  /* @media screen and (max-width: 960px) {
+  @media screen and (max-width: 960px) {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 60px 60px 60px;
     justify-items: center;
-  } */
+  }
 
-  /* @media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px) {
+    width: 40vw;
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 55px 55px 55px;
-    justify-items: center;
-  } */
+ 
+    grid-template-rows: 30px 30px;
+    grid-gap: 10px;
+  
+  }
 `;
 
 const BtnGetMatch = styled.button`
@@ -53,7 +53,7 @@ const BtnGetMatch = styled.button`
   }
 
   @media screen and (max-width: 960px) {
-    width: 60vw;
+     width: 90px;
   }
   @media screen and (max-width: 600px) {
     width: 80vw;
