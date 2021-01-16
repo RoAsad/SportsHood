@@ -53,18 +53,27 @@ const RegisterBlock = styled.div`
 
 const RegisterBtn = styled.button`
   margin-left: 10px;
-  width: 100px;
+  width: 110px;
   height: 45px;
   border: none;
   color: #9b9999;
-  font-size: 17px;
+  color: #ffff;
+  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
 
+  font-family: poppins;
+  font-weight:400;
+  border: 1.5px solid #ffff;
+  background: transparent;
+  /* text-transform: uppercase; */
+  transition: 1s;
+
   &:hover {
-    background: #7aacef;
-    color: #fff;
+    opacity: 0.2;
+  }
   }
 
   @media screen and (max-width: 600px) {

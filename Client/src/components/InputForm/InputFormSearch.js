@@ -34,15 +34,25 @@ const BtnGetMatch = styled.button`
   border: none;
   width: 150px;
   height: 52px;
-  background-color: rgb(110, 94, 254);
-  font-size: 17px;
-  color: white;
+  font-size: 18px;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
+  color: rgb(110, 94, 254);
+  color: #ffff;
+  font-family: poppins;
+  /* font-weight:400; */
+  border: 2px solid rgb(110, 94, 254);
+  border: 2px solid #ffff;
+  background: transparent;
+  /* text-transform: uppercase; */
+  transition: 1s;
+  
 
   &:hover {
-    background: #7aacef;
-    color: white;
+    opacity: 0.2;
+  }
+
+  &:focus {
+    outline: none;
   }
 
   @media screen and (max-width: 960px) {
@@ -109,7 +119,7 @@ export default function InputForm(props) {
         <GoogleMap setCityData={setCityData} />
 
         <div>
-          <BtnGetMatch type="submit">Get your match</BtnGetMatch>
+          <BtnGetMatch type="submit">Get match</BtnGetMatch>
         </div>
       </Form>
     </>

@@ -95,6 +95,7 @@ export const NavbarLinks = styled(Link)`
   color: #fff;
   letter-spacing: 1.5px;
   font-weight: lighter;
+  transition: 1s;
 
   &:hover {
     background: linear-gradient(
@@ -102,7 +103,7 @@ export const NavbarLinks = styled(Link)`
       rgb(110, 94, 254) 0%,
       rgb(123, 109, 245) 70%
     );
-    transition: all 0.5 ease-out;
+    /* transition: all 0.5 ease-out; */
   }
 
   @media screen and (max-width: 960px) {

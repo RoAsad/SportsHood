@@ -53,7 +53,6 @@ const ModalContentInput = styled.div`
   align-items: center;
   line-height: 1.8;
   color: #7aacef;
-  background: "red";
 
   h1 {
     margin-top: 20px;

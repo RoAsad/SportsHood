@@ -14,7 +14,18 @@ function SelectSport({ setSportData }) {
       }),
       control: (provided, state) => ({
         ...provided,
+        border:' #cac6c6 solid 0.5px',
+        background: '#ffff',
+        fontFamily: 'poppins',
+        boxShadow: state.isFocused ? '1px solid black' : 0,
+       
+        '&:hover': {
+       border: state.isFocused ? '1px solid #cac6c6' : '1px solid #cac6c6',
+    },
+   
         color: "#9a9a9a",
+        height: 53
+
       }),
       singleValue: (provided, state) => ({
         ...provided,
@@ -23,12 +34,17 @@ function SelectSport({ setSportData }) {
       container: (provided, state) => ({
         ...provided,
         width: 300,
-        overflow: 'visible'
+      }),
+
+      container: (provided, state) => ({
+        ...provided,
+        width: 300,
       }),
         indicatorsContainer: (provided, state) => ({
         ...provided,
         display: 'none'
       }),
+  
     }),
     []
   );
