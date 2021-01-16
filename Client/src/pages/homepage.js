@@ -96,6 +96,35 @@ const Paragraph1 = styled.p`
 const Paragraph2 = styled.p`
   text-align: center;
 `;
+
+const Circle1 = styled.div`
+background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5)
+  );
+  height: 24rem;
+  width: 24rem;
+  position: absolute;
+  border-radius: 50%;
+  top: 15%;
+  right: -18%;
+`
+const Circle2 = styled.div`
+background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  border-radius: 50%;
+  bottom: 0%;
+  left: -10%;
+`
 // END STYLING COMPONENTS
 // ======================
 
@@ -109,6 +138,8 @@ export default function Homepage({
   return (
     <>
       <HomepageStyle>
+      <Circle1></Circle1>
+      <Circle2></Circle2>
         <Head>
           <h1>Find Sport Partners</h1>
 

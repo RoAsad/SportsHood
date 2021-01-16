@@ -13,13 +13,13 @@ import InputFormReg from "../InputForm/InputFormRegistr";
 const Background = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  background: rgba(57, 105, 119, 0.7);
+  background: rgba(57, 105, 119, 0.6);
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 999 !important;
+   /* background: rgba(0, 0, 0, 0.5); */
 `;
 
 const ModalWrapper = styled.div`
@@ -27,13 +27,14 @@ const ModalWrapper = styled.div`
   height: 500px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #ffffff;
+  background-image: linear-gradient(90deg, #9cf0f8 0%, #7aacef 100%);
   color: #7aacef;
   display: grid;
   grid-template-rows: 1fr 1fr;
   position: relative;
   z-index: 10;
   border-radius: 5px;
-  z-index: 10;
+
 
   @media screen and (max-width: 960px) {
     width: 800px;
@@ -56,10 +57,12 @@ const ModalContentInput = styled.div`
 
   h1 {
     margin-top: 20px;
+    color: #ffffff;
   }
 
   p {
     margin-bottom: 1rem;
+    color: #ffffff;
 
     @media screen and (max-width: 600px) {
       width: 80vw;
@@ -69,11 +72,15 @@ const ModalContentInput = styled.div`
   button {
     color: white;
     background: rgb(110, 94, 254);
+
+    /* border: 2px solid #ffff;
+    background: transparent; */
+
     text-decoration: none;
     letter-spacing: 1px;
     width: 350px;
     height: 60px;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     border: none;
     font-weight: lighter;
     margin-top: 5rem;
@@ -222,6 +229,7 @@ const Modal = ({ showModal, setModal, setLoggedIn, loggedIn, handleLogin }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation} closeModal={closeModal}>
             <ModalWrapper showModal={showModal}>
+      
               {
                 //if (loggedIn){
               }
