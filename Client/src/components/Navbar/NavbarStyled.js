@@ -103,7 +103,6 @@ export const NavbarLinks = styled(Link)`
       rgb(110, 94, 254) 0%,
       rgb(123, 109, 245) 70%
     );
-    /* transition: all 0.5 ease-out; */
   }
 
   @media screen and (max-width: 960px) {
@@ -175,6 +174,11 @@ export const NavbarLogOut  = styled(Link)`
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding: .8rem 1.1rem;
+    width: 4rem;
   }
   &:hover {
     background: linear-gradient(

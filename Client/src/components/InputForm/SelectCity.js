@@ -2,12 +2,7 @@ import React, { useMemo } from "react";
 import Select from "react-select";
 import cities from "../Cities.json";
 
-
-
-
-
 function SelectCity(props) {
-  
   const customStyles = useMemo(
     () => ({
       option: (provided, state) => ({
@@ -23,7 +18,6 @@ function SelectCity(props) {
       singleValue: (provided, state) => ({
         ...provided,
         color: state.data.color,
-        
       }),
     }),
     []
@@ -31,8 +25,7 @@ function SelectCity(props) {
 
   return (
     <div>
-      <Select options={cities}
-      styles={customStyles} />
+      <Select options={cities} styles={customStyles} />
     </div>
   );
 }

@@ -19,7 +19,7 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999 !important;
-   /* background: rgba(0, 0, 0, 0.5); */
+  /* background: rgba(0, 0, 0, 0.5); */
 `;
 
 const ModalWrapper = styled.div`
@@ -31,26 +31,24 @@ const ModalWrapper = styled.div`
   color: #7aacef;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  position: relative;
+  /* position: relative; */
   z-index: 10;
   border-radius: 5px;
 
-
-  @media screen and (max-width: 960px) {
-    width: 800px;
+  @media screen and (max-width: 600px) {
+    width: 600px;
     height: 500px;
-  }
-  
-  @media screen and (max-width: 960px) {
-    width: 500px;
-    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const ModalContentInput = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   line-height: 1.8;
   color: #7aacef;
@@ -63,68 +61,16 @@ const ModalContentInput = styled.div`
   p {
     margin-bottom: 1rem;
     color: #ffffff;
-
-    @media screen and (max-width: 600px) {
-      width: 80vw;
-      text-align: center;
-    }
   }
-  button {
-    color: white;
-    background: rgb(110, 94, 254);
-
-    /* border: 2px solid #ffff;
-    background: transparent; */
-
-    text-decoration: none;
-    letter-spacing: 1px;
-    width: 350px;
-    height: 60px;
-    font-size: 1.1rem;
-    border: none;
-    font-weight: lighter;
-    margin-top: 5rem;
-    margin-bottom: 10rem;
-    font-family: "Poppins", sans-serif;
-
-    @media screen and (max-width: 960px) {
-      width: 80vw;
+  @media screen and (max-width: 600px) {
+    p {
+      font-size: 11px;
     }
   }
 `;
 
 const ModalContentMessage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1.8;
-  color: #7aacef;
-  padding-top: 140px;
 
-  button {
-      color: white;
-      padding: 0.8rem 1.1rem;
-      background: rgb(110, 94, 254);
-      text-decoration: none;
-      letter-spacing: 1px;
-      width: 400px;
-      font-size: 1.5rem;
-      border: none;
-      font-weight: lighter;
-      margin-top: 5rem;
-      margin-bottom: 10rem;
-      font-family: "Poppins", sans-serif;
-    }
-`;
-
-const LoginGoogle = styled.a`
-  padding: 10px 24px;
-  color: white;
-  border: none;
-  background: rgb(110, 94, 254);
-  font-size: 18px;
-  text-decoration: none;
 `;
 
 const CloseModalButton = styled(MdClose)`
@@ -137,57 +83,6 @@ const CloseModalButton = styled(MdClose)`
   padding: 0;
   z-index: 10;
 `;
-
-const InputSport = styled.div`
-  padding: 0.6rem;
-  font-size: 1rem;
-  border: none;
-  background: white;
-  width: 281px;
-
-  input {
-    padding: 0.9rem;
-    font-size: 1rem;
-    border: rgb(211, 208, 208) solid 0.5px;
-    background: white;
-    width: 300px;
-    border-radius: 3px;
-    color: rgb(211, 208, 208);
-    font-family: "Poppins", sans-serif;
-  }
-  ::placeholder {
-    color: rgb(211, 208, 208);
-  }
-
-  @media screen and (max-width: 960px) {
-    width: 70vw;
-    input {
-      width: 68vw;
-    }
-
-    ::placeholder {
-      text-align: center;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    width: 80vw;
-    padding: 0.3rem;
-    font-size: 2rem;
-
-    input {
-      width: 80vw;
-      padding: 0.5rem;
-      font-size: 2rem;
-    }
-
-    ::placeholder {
-      text-align: center;
-      font-size: 1.3rem;
-    }
-  }
-`;
-
 // END STYLING COMPONENTS
 // ======================
 
@@ -229,28 +124,26 @@ const Modal = ({ showModal, setModal, setLoggedIn, loggedIn, handleLogin }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation} closeModal={closeModal}>
             <ModalWrapper showModal={showModal}>
-      
               {
                 //if (loggedIn){
               }
 
-              
-                <ModalContentInput>
-                  <h1>Are you ready?</h1>
-                  <p>Let others know about what sport you practice</p>
+              <ModalContentInput>
+                <h1>Are you ready?</h1>
+                <p>Let others know about what sport you practice</p>
                 <InputFormReg />
-                </ModalContentInput>
-              
+              </ModalContentInput>
+
               {
-              // <ModalContentMessage>
-              //   <h1>Please, login first</h1>
-              //   <LoginGoogle
-              //     onClick={handleLogin}
-              //     href="http://localhost:8080/signIn"
-              //   >
-              //     Log In with Google
-              //   </LoginGoogle>
-              // </ModalContentMessage>
+                // <ModalContentMessage>
+                //   <h1>Please, login first</h1>
+                //   <LoginGoogle
+                //     onClick={handleLogin}
+                //     href="http://localhost:8080/signIn"
+                //   >
+                //     Log In with Google
+                //   </LoginGoogle>
+                // </ModalContentMessage>
               }
               <CloseModalButton
                 aria-label="Close modal"

@@ -165,10 +165,8 @@ export default function Homepage({
   return (
     <>
       <HomepageStyle>
-      <Circle1></Circle1>
-      <Circle2></Circle2>
         <Head>
-          <h1>Find Sports Partner</h1>
+          <h1>Find Sports Partners</h1>
 
           <RegisterBlock>
             <Paragraph1>Let others know about youself</Paragraph1>

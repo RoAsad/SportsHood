@@ -45,7 +45,6 @@ const BtnGetMatch = styled.button`
   background: transparent;
   /* text-transform: uppercase; */
   transition: 1s;
-  
 
   &:hover {
     opacity: 0.2;
@@ -56,10 +55,7 @@ const BtnGetMatch = styled.button`
   }
 
   @media screen and (max-width: 960px) {
-    width: 60vw;
-  }
-  @media screen and (max-width: 600px) {
-    width: 80vw;
+    width: 300px;
   }
 `;
 // END STYLING COMPONENTS
@@ -91,14 +87,18 @@ export default function InputForm(props) {
     };
 
     const url =
-      "http://localhost:8080/api/v1/findAvailableUsers?sportsName="+sportData+"&"+"city="+cityData;
+      "http://localhost:8080/api/v1/findAvailableUsers?sportsName=" +
+      sportData +
+      "&" +
+      "city=" +
+      cityData;
     const proxyurl = "";
     fetch(url, requestOptionsGet)
       .then((response) => response.json())
       // .then((data) => this.setState({ postId: data.id }));
 
       .then((data) => {
-        console.log("You have been registered \n\n\n\n\n\n\n\n\n\n\n\n");
+        console.log("You have sent the request \n\n\n\n\n\n\n\n\n\n\n\n");
       })
       .catch(() =>
         console.log(
@@ -118,9 +118,7 @@ export default function InputForm(props) {
 
         <GoogleMap setCityData={setCityData} />
 
-        <div>
-          <BtnGetMatch type="submit">Get match</BtnGetMatch>
-        </div>
+        <BtnGetMatch type="submit">Get match</BtnGetMatch>
       </Form>
     </>
   );

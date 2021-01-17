@@ -27,6 +27,7 @@ const ModalWrapper = styled.div`
   position: relative;
   z-index: 10;
   border-radius: 10px;
+  z-index: 999 !important;
   /* background-color: blue; */
 
   @media screen and (max-width: 960px) {
