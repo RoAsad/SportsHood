@@ -4,8 +4,6 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-
-
 export default function GoogleMap({ setCityData }) {
   const [address, setAddress] = React.useState("");
 
@@ -14,7 +12,6 @@ export default function GoogleMap({ setCityData }) {
     // const latLng = await getLatLng(results[0]);
     setCityData(value);
     setAddress(value);
-    
   };
 
   return (
@@ -23,7 +20,6 @@ export default function GoogleMap({ setCityData }) {
         value={address}
         onChange={setAddress}
         onSelect={handleSelect}
-        
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>

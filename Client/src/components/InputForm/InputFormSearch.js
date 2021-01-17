@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SelectSport from "./SelectSport";
 import GoogleMap from "./GoogleMap";
 import Axios from "axios";
+import { Redirect, withRouter } from "react-router-dom";
 
 // STYLING COMPONENTS
 const Form = styled.form`
@@ -45,7 +46,6 @@ const BtnGetMatch = styled.button`
   background: transparent;
   /* text-transform: uppercase; */
   transition: 1s;
-  
 
   &:hover {
     opacity: 0.2;
@@ -56,61 +56,83 @@ const BtnGetMatch = styled.button`
   }
 
   @media screen and (max-width: 960px) {
-    width: 60vw;
-  }
-  @media screen and (max-width: 600px) {
-    width: 80vw;
+    width: 300px;
   }
 `;
 // END STYLING COMPONENTS
 // ----------------------
 
-export default function InputForm(props) {
-  const [sportData, setSportData] = useState("");
-  const [cityData, setCityData] = useState("");
+export default function InputForm(  {
+  sportData,
+  setSportData,
+  cityData,
+  setCityData,
+  handleSubmit
+}) {
 
-  // const [matcNoEmail, setmatcNoEmail] = useState("");
+  
+  const [goToResult, setGoToResult] = useState("");
+  // const [sportData, setSportData] = useState("");
+  // const [cityData, setCityData] = useState("");
+ 
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  // // const [matcNoEmail, setmatcNoEmail] = useState("");
 
-    //IF NOT LOGGED IN:
-    //MODAL
-    //ELSE:
-    //HANDLE GET REQUEST TO REGISTER USER
-    console.log("sportData: ", sportData);
-    console.log("cityData: ", cityData);
+  // const handleSubmit = (evt) => {
+  //   evt.preventDefault();
 
-    const requestOptionsGet = {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      headers: { "Content-Type": "application/json" },
-    };
+  //   //IF NOT LOGGED IN:
+  //   //MODAL
+  //   //ELSE:
+  //   //HANDLE GET REQUEST TO REGISTER USER
+  //   console.log("sportData: ", sportData);
+  //   console.log("cityData: ", cityData);
 
-    const url =
-      "http://localhost:8080/api/v1/findAvailableUsers?sportsName="+sportData+"&"+"city="+cityData;
-    const proxyurl = "";
-    fetch(url, requestOptionsGet)
-      .then((response) => response.json())
-      // .then((data) => this.setState({ postId: data.id }));
+  //   const requestOptionsGet = {
+  //     method: "GET",
+  //     mode: "cors",
+  //     headers: {
+  //       "Access-Control-Allow-Origin": "*",
+  //     },
+  //     headers: { "Content-Type": "application/json" },
+  //   };
 
-      .then((data) => {
-        console.log("You have been registered \n\n\n\n\n\n\n\n\n\n\n\n");
-      })
-      .catch(() =>
-        console.log(
-          "Can’t access " +
-            "http://localhost:8080/api/v1/registerUser" +
-            " response. Blocked by browser?"
-        )
-      );
-  };
+  //   const url =
+  //     "http://localhost:8080/api/v1/findAvailableUsers?sportsName=" +
+  //     sportData +
+  //     "&" +
+  //     "city=" +
+  //     cityData;
+  //   const proxyurl = "";
+  //   fetch(url, requestOptionsGet)
+  //     .then((response) => response.json())
+  //     // .then((data) => this.setState({ postId: data.id }));
 
+  //     .then((data) => {
+  //       console.log("You have sent the request \n\n\n\n\n\n\n\n\n\n\n\n");
+  //     })
+  //     .catch(() =>
+  //       console.log(
+  //         "Can’t access response. Blocked by browser?"
+  //       )
+  //     );
+  // };
+const goToResults = () => { 
+  setGoToResult("true");
+}
   //END HANDLE POST REQUEST
-
+if(goToResult==="true")
+{
+  return (
+    <Redirect
+    push
+    to={{
+      pathname: "/results",
+      search: `?sportsName=${sportData}&city=${cityData}`,
+    }}
+  />
+  )
+}
   return (
     <>
       <Form onSubmit={handleSubmit}>
@@ -118,9 +140,7 @@ export default function InputForm(props) {
 
         <GoogleMap setCityData={setCityData} />
 
-        <div>
-          <BtnGetMatch type="submit">Get match</BtnGetMatch>
-        </div>
+        <BtnGetMatch onClick={goToResults}type="submit">Get match</BtnGetMatch>
       </Form>
     </>
   );

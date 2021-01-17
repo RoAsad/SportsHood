@@ -49,6 +49,51 @@ export default function App() {
     });
   };
   //END HANDLE LOGIN  FUNCTION
+  const [sportData, setSportData] = useState("");
+  const [cityData, setCityData] = useState("");
+ 
+
+  // const [matcNoEmail, setmatcNoEmail] = useState("");
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    //IF NOT LOGGED IN:
+    //MODAL
+    //ELSE:
+    //HANDLE GET REQUEST TO REGISTER USER
+    console.log("sportData: ", sportData);
+    console.log("cityData: ", cityData);
+
+    const requestOptionsGet = {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      headers: { "Content-Type": "application/json" },
+    };
+
+    const url =
+      "http://localhost:8080/api/v1/findAvailableUsers?sportsName=" +
+      sportData +
+      "&" +
+      "city=" +
+      cityData;
+    const proxyurl = "";
+    fetch(url, requestOptionsGet)
+      .then((response) => response.json())
+      // .then((data) => this.setState({ postId: data.id }));
+
+      .then((data) => {
+        console.log("You have sent the request \n\n\n\n\n\n\n\n\n\n\n\n");
+      })
+      .catch(() =>
+        console.log(
+          "Can’t access response. Blocked by browser?"
+        )
+      );
+  };
 
   return (
     <BrowserRouter>
@@ -100,11 +145,24 @@ export default function App() {
             setLoggedIn={setLoggedIn}
             loggedIn={loggedIn}
             openLogin={openLogin}
+
+            sportData={sportData}
+            setSportData={setSportData}
+            cityData={cityData}
+            setCityData={setCityData}
+            handleSubmit={handleSubmit}
+
           />
         </Route>
 
         <Route path="/results">
-          <ResultPage loggedIn={loggedIn} />
+          <ResultPage loggedIn={loggedIn}
+          sportData={sportData}
+          setSportData={setSportData}
+          cityData={cityData}
+          setCityData={setCityData}
+          handleSubmit={handleSubmit}
+/>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -159,16 +159,18 @@ export default function Homepage({
   openModal,
   showLogin,
   openLogin,
+  setSportData,
+  cityData,
+  setCityData,
+  handleSubmit,sportData,
 
   loggedIn
 }) {
   return (
     <>
       <HomepageStyle>
-      <Circle1></Circle1>
-      <Circle2></Circle2>
         <Head>
-          <h1>Find Sports Partner</h1>
+          <h1>Find Sports Partners</h1>
 
           <RegisterBlock>
             <Paragraph1>Let others know about youself</Paragraph1>
@@ -189,7 +191,14 @@ export default function Homepage({
           <Paragraph2>Type sport name and your city </Paragraph2>
         </Head>
 
-        {showLogin ? null : <InputFormSearch />}
+        {showLogin ? null : <InputFormSearch  
+        sportData={sportData}
+            setSportData={setSportData}
+            cityData={cityData}
+            setCityData={setCityData}
+            handleSubmit={handleSubmit}
+        />
+            }
 
       </HomepageStyle>
     </>

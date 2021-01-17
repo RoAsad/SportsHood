@@ -3,7 +3,6 @@ import Select from "react-select";
 import sports from "../Sports.json";
 
 function SelectSport({ setSportData }) {
-  
   const customStyles = useMemo(
     () => ({
       option: (provided, state) => ({
@@ -14,18 +13,17 @@ function SelectSport({ setSportData }) {
       }),
       control: (provided, state) => ({
         ...provided,
-        border:' #cac6c6 solid 0.5px',
-        background: '#ffff',
-        fontFamily: 'poppins',
-        boxShadow: state.isFocused ? '1px solid black' : 0,
-       
-        '&:hover': {
-       border: state.isFocused ? '1px solid #cac6c6' : '1px solid #cac6c6',
-    },
-   
-        color: "#9a9a9a",
-        height: 53
+        border: " #cac6c6 solid 0.5px",
+        background: "#ffff",
+        fontFamily: "poppins",
+        boxShadow: state.isFocused ? "1px solid black" : 0,
 
+        "&:hover": {
+          border: state.isFocused ? "1px solid #cac6c6" : "1px solid #cac6c6",
+        },
+
+        color: "#9a9a9a",
+        height: 53,
       }),
       singleValue: (provided, state) => ({
         ...provided,
@@ -40,15 +38,13 @@ function SelectSport({ setSportData }) {
         ...provided,
         width: 300,
       }),
-        indicatorsContainer: (provided, state) => ({
+      indicatorsContainer: (provided, state) => ({
         ...provided,
-        display: 'none'
+        display: "none",
       }),
-  
     }),
     []
   );
-
 
   return (
     <div>
@@ -57,6 +53,10 @@ function SelectSport({ setSportData }) {
         placeholder="Sport"
         options={sports}
         styles={customStyles}
+        onChange={(e) => {
+          const selectedSport = e.value;
+          setSportData(selectedSport);
+        }}
       />
     </div>
   );

@@ -10,28 +10,11 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 1.8;
   color: #7aacef;
-  
-  grid-gap: 10px;
-  list-style: none;
-  text-align: center;
-  width: 60vw;
-  
-  @media screen and (max-width: 960px) {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 60px 60px 60px;
-    justify-items: center;
-  }
+  grid-gap: 13px;
 
   @media screen and (max-width: 600px) {
-    width: 40vw;
-    display: grid;
- 
-    grid-template-rows: 30px 30px;
-    grid-gap: 10px;
-  
+    max-width: 600px;
   }
 `;
 
@@ -39,11 +22,12 @@ const BtnGetMatch = styled.button`
   padding: 0.5rem;
   font-size: 2rem;
   border: none;
-  width: 150px;
+  width: 300px;
   height: 52px;
-  background-color: rgb(110, 94, 254);
   font-size: 17px;
   color: white;
+  border: 2px solid #ffff;
+  background: transparent;
   letter-spacing: 1px;
   transition: all 0.3s ease;
 
@@ -51,49 +35,67 @@ const BtnGetMatch = styled.button`
     background: #7aacef;
     color: white;
   }
-
-  @media screen and (max-width: 960px) {
-     width: 90px;
-  }
-  @media screen and (max-width: 600px) {
-    width: 80vw;
-  }
 `;
 // END STYLING COMPONENTS
 // ----------------------
 
 export default function InputForm(props) {
-
   const [sportData, setSportData] = useState("");
   const [cityData, setCityData] = useState("");
 
-
+  const [userId, setUserId] = useState("");
   
 
-
-
-
-
-
-  // const [matcNoEmail, setmatcNoEmail] = useState("");
-
+  useEffect((props) => {
+  //     let queryParameter = window.location.href;
+  //     queryParameter = queryParameter.split("=");
+  //     let sportsName = queryParameter[1].replaceAll("%20", ""); 
+  //     sportsName = sportsName.split("&"); 
+  //     sportsName= sportsName[0];
+  //     let city = queryParameter[2].replaceAll("%20", ""); 
+      // console.log(sportsName, city);
+      const requestOptionsGet = {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+          headers: { "Content-Type": "application/json" },
+        };
+    
+        const url =
+          "http://localhost:8080//api/v1/getUserInfo"
+        const proxyurl = "";
+        fetch(url, requestOptionsGet)
+          .then((response) => response.json())
+          // .then((data) => this.setState({ postId: data.id }));
+    
+          .then((data) => {
+            console.log("You have sent the request yo yo yo \n\n\n\n\n\n\n\n\n\n\n\n");
+            console.log("USER DATA",data);
+            setUserId(data);
+          })
+          .catch(() =>
+            console.log(
+              "Can’t access response. Blocked by browser?"
+            )
+          );
+    },[]);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     // alert(sportData);
     // alert(cityData);
-
 
     //HANDLE POST REQUEST TO REGISTER USER
     console.log("sportsData: ", sportData);
     console.log("cityData: ", cityData);
     // curl -d '{sportsName: sportData, city: cityData}' -H 'Content-Type: application/json' http://localhost:8080/api/v1/registerUser;
 
-
     const requestOptionsPost = {
       method: "POST",
-      mode: 'cors',
+      mode: "cors",
       headers: {
-        'Access-Control-Allow-Origin': '*'
+        "Access-Control-Allow-Origin": "*",
       },
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sportsName: sportData, city: cityData }),
@@ -130,8 +132,8 @@ export default function InputForm(props) {
     if [] then I display message "NO MATCH"
   
     */
-    const url = "http://localhost:8080/api/v1/registerUser"
-    const proxyurl = "https://cors-anywhere.herokuapp.com/"
+    const url = "http://localhost:8080/api/v1/registerUser";
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
     fetch(url, requestOptionsPost)
       .then((response) => response.json())
       // .then((data) => this.setState({ postId: data.id }));
@@ -139,12 +141,16 @@ export default function InputForm(props) {
       .then((data) => {
         console.log("You have been registered \n\n\n\n\n\n\n\n\n\n\n\n");
       })
-      .catch(() => console.log("Can’t access " + "http://localhost:8080/api/v1/registerUser" + " response. Blocked by browser?"));
+      .catch(() =>
+        console.log(
+          "Can’t access " +
+            "http://localhost:8080/api/v1/registerUser" +
+            " response. Blocked by browser?"
+        )
+      );
   };
 
   //END HANDLE POST REQUEST
-
-
 
   return (
     <>
@@ -153,12 +159,8 @@ export default function InputForm(props) {
 
         <GoogleMap setCityData={setCityData} />
 
-        <div>
-          <BtnGetMatch type="submit">Get your match</BtnGetMatch>
-        </div>
+        <BtnGetMatch type="submit">Register</BtnGetMatch>
       </Form>
-    
-      
     </>
   );
 }
