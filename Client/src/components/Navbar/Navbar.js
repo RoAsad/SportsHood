@@ -78,7 +78,9 @@ const Navbar = ({
           </NavbarItem>
 
           <NavbarItem>
-            {<NavbarLogOut onClick={openModalUserInfo}>L</NavbarLogOut>}
+            {
+              // <NavbarLogOut onClick={openModalUserInfo}>L</NavbarLogOut>
+            }
             {
               // IF LOGGED IN:
               //if (loggedIn) {
@@ -89,7 +91,7 @@ const Navbar = ({
               //} else {
             }
             {
-              // <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
+              <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
             }
           </NavbarItem>
         </NavbarMenu>
