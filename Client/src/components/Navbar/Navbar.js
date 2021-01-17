@@ -78,13 +78,9 @@ const Navbar = ({
           </NavbarItem>
 
           <NavbarItem>
-<<<<<<< HEAD
-            {/* {<NavbarLogOut onClick={openModalUserInfo}>L</NavbarLogOut>} */}
-=======
             {
               // <NavbarLogOut onClick={openModalUserInfo}>L</NavbarLogOut>
             }
->>>>>>> e747d8d3700a9773430fca4324ae38a1504a2aca
             {
               // IF LOGGED IN:
               //if (loggedIn) {
@@ -94,15 +90,9 @@ const Navbar = ({
               // loggedIn={loggedIn} />
               //} else {
             }
-<<<<<<< HEAD
-            
-               <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
-            
-=======
             {
               <NavbarLogin onClick={openLogin}> Log in </NavbarLogin>
             }
->>>>>>> e747d8d3700a9773430fca4324ae38a1504a2aca
           </NavbarItem>
         </NavbarMenu>
       </Nav>
