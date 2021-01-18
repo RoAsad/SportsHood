@@ -9,7 +9,7 @@ padding-top:100px;
 display: flex; 
 align-self:center;   
 overflow: hidden;
-max-width: 250px; 
+max-width: 355px; 
 `;
 
 function Images() { 

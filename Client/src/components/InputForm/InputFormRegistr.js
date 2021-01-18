@@ -47,40 +47,12 @@ export default function InputForm(props) {
   
 
   useEffect((props) => {
-  //     let queryParameter = window.location.href;
-  //     queryParameter = queryParameter.split("=");
-  //     let sportsName = queryParameter[1].replaceAll("%20", ""); 
-  //     sportsName = sportsName.split("&"); 
-  //     sportsName= sportsName[0];
-  //     let city = queryParameter[2].replaceAll("%20", ""); 
-      // console.log(sportsName, city);
-      const requestOptionsGet = {
-          method: "GET",
-          mode: "cors",
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-          headers: { "Content-Type": "application/json" },
-        };
-    
-        const url =
-          "http://localhost:8080//api/v1/getUserInfo"
-        const proxyurl = "";
-        fetch(url, requestOptionsGet)
-          .then((response) => response.json())
-          // .then((data) => this.setState({ postId: data.id }));
-    
-          .then((data) => {
-            console.log("You have sent the request yo yo yo \n\n\n\n\n\n\n\n\n\n\n\n");
-            console.log("USER DATA",data);
-            setUserId(data);
-          })
-          .catch(() =>
-            console.log(
-              "Can’t access response. Blocked by browser?"
-            )
-          );
-    },[]);
+      let queryParameter = window.location.href;
+      queryParameter = queryParameter.split("=");
+      let id = queryParameter[1];
+      setUserId(id);
+  }
+);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     // alert(sportData);
@@ -89,6 +61,9 @@ export default function InputForm(props) {
     //HANDLE POST REQUEST TO REGISTER USER
     console.log("sportsData: ", sportData);
     console.log("cityData: ", cityData);
+    console.log("userId", userId);
+    let sd = sportData.replaceAll(" ","");
+    let cd = cityData.replaceAll(" ","");
     // curl -d '{sportsName: sportData, city: cityData}' -H 'Content-Type: application/json' http://localhost:8080/api/v1/registerUser;
 
     const requestOptionsPost = {
@@ -98,7 +73,7 @@ export default function InputForm(props) {
         "Access-Control-Allow-Origin": "*",
       },
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sportsName: sportData, city: cityData }),
+      body: JSON.stringify({ sportsName: sd, city: cd, userId:userId }),
     };
     // headers('Access-Control-Allow-Origin: your-host');
     // headers('Access-Control-Allow-Credentials: true');

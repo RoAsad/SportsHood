@@ -20,6 +20,10 @@ import {
   NavbarLogOut,
 } from "./NavbarStyled";
 
+const Wrapper = styled.div
+`
+// background-image: linear-gradient(90deg, #9cf0f8 0%, #7aacef 100%);
+`
 const Navbar = ({
   openModal,
   showLogin,
@@ -36,7 +40,7 @@ const Navbar = ({
   const handleClickBurgerMenu = () => setClickBurgerMenu(!clickBurgerMenu);
 
   return (
-    <>
+    <Wrapper>
       <Login
         showLogin={showLogin}
         setShowLogin={setShowLogin}
@@ -65,7 +69,7 @@ const Navbar = ({
               // if (loggedIn){
             }
             <NavbarLinks onClick={openModal} to="/">
-              Register
+              Register for sports
             </NavbarLinks>
             {
               //}else {
@@ -73,9 +77,9 @@ const Navbar = ({
             }
           </NavbarItem>
 
-          <NavbarItem>
+          {/* <NavbarItem>
             <NavbarLinks to="/results">Results</NavbarLinks>
-          </NavbarItem>
+          </NavbarItem> */}
 
           <NavbarItem>
             {
@@ -96,7 +100,7 @@ const Navbar = ({
           </NavbarItem>
         </NavbarMenu>
       </Nav>
-    </>
+    </Wrapper>
   );
 };
 

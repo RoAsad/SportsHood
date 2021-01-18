@@ -119,6 +119,10 @@ export default function InputForm(  {
   // };
 const goToResults = () => { 
   setGoToResult("true");
+  let sd = sportData.replaceAll(" ","");
+  let city = cityData.replaceAll(" ","");
+  setSportData(sd);
+  setCityData(city);
 }
   //END HANDLE POST REQUEST
 if(goToResult==="true")

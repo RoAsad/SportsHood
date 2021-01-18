@@ -11,7 +11,8 @@ const HomepageStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  // height: 100vh; 
+  background-image: linear-gradient(90deg, #9cf0f8 0%, #7aacef 100%);
   @media screen and (max-width: 600px) {
     margin-top: 4rem;
   }

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Images } from "../components";
 import { InputFormSearch } from "../components";
-import Map from "../components/Map"
+import Map from "../components/Map";
+import { Link } from "react-router-dom";
 
 
 
@@ -29,7 +30,7 @@ padding: 10px 10px;
 }
 `;
 
-const Button = styled.button`
+const Button = styled(Link)`
 min-width:90px;
 padding:16px, 32px;
 border-radius: 4px;
@@ -38,6 +39,8 @@ background: rgb(110, 94, 254);
 color: #fff;
 font-size: 18px;
 cursor:pointer;
+text-decoration: none;
+letter-spacing: 1px;
 `;
 
 const Div1 = styled.div`
@@ -47,7 +50,18 @@ padding-right: 200px;
 const Wrapper= styled.div`
 display: flex; 
 justify-content: center; 
+`;
+const MainWrapper = styled.div`
+height:100vh; 
+background-color: white; 
 `
+
+const ButtonWrapper = styled.div`
+display: flex;
+justify-content:space-around;
+background: rgb(110, 94, 254);
+padding: 8px;
+`;
 
 
 export default function ResultPage( {loggedIn,
@@ -61,12 +75,23 @@ export default function ResultPage( {loggedIn,
 
     useEffect((props) => {
         let queryParameter = window.location.href;
-        queryParameter = queryParameter.split("=");
-        let sportsName = queryParameter[1].replaceAll("%20", ""); 
-        sportsName = sportsName.split("&"); 
-        sportsName= sportsName[0];
-        let city = queryParameter[2].replaceAll("%20", ""); 
-        console.log(sportsName, city);
+        console.log("Url", queryParameter);
+        let sportsName="";
+        let city=""; 
+        if(queryParameter.includes("="))
+        {
+            console.log("Url", queryParameter);
+            queryParameter = queryParameter.split("=");
+            // let sportsName = queryParameter[1].replaceAll("%20", ""); 
+            sportsName = queryParameter[1].split("&"); 
+            sportsName= sportsName[0];
+            // let city = queryParameter[2].replaceAll("%20", ""); 
+            city = queryParameter[2];
+      
+        }
+        
+        console.log("sportsName",sportsName);
+        console.log("city",city);
         const requestOptionsGet = {
             method: "GET",
             mode: "cors",
@@ -83,6 +108,7 @@ export default function ResultPage( {loggedIn,
             "city=" +
             city;
           const proxyurl = "";
+          console.log(url);
           fetch(url, requestOptionsGet)
             .then((response) => response.json())
             // .then((data) => this.setState({ postId: data.id }));
@@ -98,9 +124,13 @@ export default function ResultPage( {loggedIn,
               )
             );
       },[]);
+      const map =
+      users !== "" ? (
+        <Map data={users} />
+      ) : null;
   
     return(
-        
+        <MainWrapper>
         <Div>
             <Div>
             {/* <Div1><Images/></Div1> */}
@@ -110,22 +140,24 @@ export default function ResultPage( {loggedIn,
             <Container>
             {/* <input type="text" placeholder="Sport" name="search"/>
             <input type="text" placeholder="City" name="search"/> */}
-            <InputFormSearch    
+            {/* <InputFormSearch    
             sportData={sportData}
             setSportData={setSportData}
             cityData={cityData}
             setCityData={setCityData}
             handleSubmit={handleSubmit}
-/>
+/> */}
 
-            <Button >Search</Button>
-            
+            <ButtonWrapper>
+              <Button to="/" >Search Again</Button>
+            </ButtonWrapper>
             </Container>
             </Div> 
             <Wrapper>
-            <Map/>
+            {map}
             </Wrapper>
             
         </Div>  
+        </MainWrapper>
     );  
 }
