@@ -1,12 +1,9 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useRef, useEffect, useCallback, useContext } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
-import { Link } from "react-router-dom";
-import SelectSport from "../InputForm/SelectSport";
-import SelectCity from "../InputForm/SelectCity";
-import GoogleMap from "../InputForm/GoogleMap";
 import InputFormReg from "../InputForm/InputFormRegistr";
+import { ContextApp } from "../../ContextApp";
 
 // STYLING COMPONENTS
 // ==================
@@ -19,7 +16,7 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999 !important;
-  /* background: rgba(0, 0, 0, 0.5); */
+
 `;
 
 const ModalWrapper = styled.div`
@@ -31,7 +28,6 @@ const ModalWrapper = styled.div`
   color: #7aacef;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  /* position: relative; */
   z-index: 10;
   border-radius: 5px;
 
@@ -86,7 +82,11 @@ const CloseModalButton = styled(MdClose)`
 // END STYLING COMPONENTS
 // ======================
 
-const Modal = ({ showModal, setModal, setLoggedIn, loggedIn, handleLogin }) => {
+const Modal = () => {
+  
+  const { openModal, showModal, setModal, setLoggedIn, loggedIn,  handleLogin } = useContext(ContextApp);
+
+
   const modalRef = useRef();
 
   const animation = useSpring({
@@ -137,13 +137,13 @@ const Modal = ({ showModal, setModal, setLoggedIn, loggedIn, handleLogin }) => {
               
               {/* <ModalContentMessage>
                   <h1>Please, login first</h1>
-                   <LoginGoogle
-                     onClick={handleLogin}
-                     href="http://localhost:8080/signIn"
-                   >
-                     Log In with Google
-                   </LoginGoogle>
-                 </ModalContentMessage>
+                    <LoginGoogle
+                      onClick={handleLogin}
+                      href="http://localhost:8080/signIn"
+                    >
+                      Log In with Google
+                    </LoginGoogle>
+                  </ModalContentMessage>
                */}
               <CloseModalButton
                 aria-label="Close modal"

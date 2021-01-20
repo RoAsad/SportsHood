@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Axios from "axios";
+import { ContextApp } from "./ContextApp";
 
 //IMPORT COMPONENTS
 import Homepage from "./pages/homepage";
@@ -51,7 +52,7 @@ export default function App() {
   //END HANDLE LOGIN  FUNCTION
   const [sportData, setSportData] = useState("");
   const [cityData, setCityData] = useState("");
- 
+
 
   // const [matcNoEmail, setmatcNoEmail] = useState("");
 
@@ -96,75 +97,25 @@ export default function App() {
   };
 
   return (
+  <ContextApp.Provider value={{ openModal, showModal, setModal, modalRef, setLoggedIn, loggedIn,  handleLogin, showLogin, setShowLogin, openLogin, openModalUserInfo, modalUserInfo, setModalUserInfo, sportData, setSportData, cityData, setCityData, handleSubmit }}>
     <BrowserRouter>
-      <ModalRegistr
-        openModal={openModal}
-        showModal={showModal}
-        setModal={setModal}
-        modalRef={modalRef}
-        setLoggedIn={setLoggedIn}
-        loggedIn={loggedIn}
-        handleLogin={handleLogin}
-      />
+      <ModalRegistr />
 
-      <Login
-        showLogin={showLogin}
-        setShowLogin={setShowLogin}
-        openLogin={openLogin}
-        modalRef={modalRef}
-        setLoggedIn={setLoggedIn}
-        handleLogin={handleLogin}
-      />
+      <Login />
 
-      <Navbar
-        openModal={openModal}
-        showModal={showModal}
-        setModal={setModal}
-        openModalUserInfo={openModalUserInfo}
-        modalUserInfo={modalUserInfo}
-        setModalUserInfo={setModalUserInfo}
-        modalRef={modalRef}
-        showLogin={showLogin}
-        setShowLogin={setShowLogin}
-        openLogin={openLogin}
-        setLoggedIn={setLoggedIn}
-        loggedIn={loggedIn}
-      />
+      <Navbar />
     
 
       <Switch>
         <Route path="/" exact>
-          <Homepage
-            modalUserInfo={modalUserInfo}
-            openModalUserInfo={openModalUserInfo}
-            openModal={openModal}
-            showModal={showModal}
-            setModal={setModal}
-            modalRef={modalRef}
-            showLogin={showLogin}
-            setLoggedIn={setLoggedIn}
-            loggedIn={loggedIn}
-            openLogin={openLogin}
-
-            sportData={sportData}
-            setSportData={setSportData}
-            cityData={cityData}
-            setCityData={setCityData}
-            handleSubmit={handleSubmit}
-
-          />
+          <Homepage />
         </Route>
 
         <Route path="/results">
-          <ResultPage loggedIn={loggedIn}
-          sportData={sportData}
-          setSportData={setSportData}
-          cityData={cityData}
-          setCityData={setCityData}
-          handleSubmit={handleSubmit}
-/>
+          <ResultPage />
         </Route>
       </Switch>
     </BrowserRouter>
+  </ContextApp.Provider>
   );
 }

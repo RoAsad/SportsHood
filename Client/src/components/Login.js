@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useCallback, useState } from "react";
+import React, { useRef, useEffect, useCallback, useState, useContext } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { MdClose } from "react-icons/md";
 import modal from "./modal.jpg";
+import { ContextApp } from "../ContextApp";
 // import { GoogleLogin } from "react-google-login";
 
 const Background = styled.div`
@@ -109,13 +110,12 @@ const LoginGoogle = styled.a`
   text-decoration: none;
 `;
 
-export const Login = ({
-  showLogin,
-  setShowLogin,
-  setLoggedIn,
-  handleLogin,
-}) => {
-  const modalRef = useRef();
+export const Login = () => {
+  const { showLogin, setShowLogin, openLogin, modalRef, setLoggedIn, handleLogin } = useContext(ContextApp);
+
+
+
+  // const modalRef = useRef();
 
   const animation = useSpring({
     config: {

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { InputFormSearch } from "../components";
+import { ContextApp } from "../ContextApp";
 
 
 
@@ -11,7 +12,6 @@ const HomepageStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // height: 100vh; 
   background-image: linear-gradient(90deg, #9cf0f8 0%, #7aacef 100%);
   @media screen and (max-width: 600px) {
     margin-top: 4rem;
@@ -156,17 +156,11 @@ background: white;
 // END STYLING COMPONENTS
 // ======================
 
-export default function Homepage({
-  openModal,
-  showLogin,
-  openLogin,
-  setSportData,
-  cityData,
-  setCityData,
-  handleSubmit,sportData,
+export default function Homepage() {
 
-  loggedIn
-}) {
+  const { modalUserInfo, openModalUserInfo, openModal, showModal, setModal, modalRef, showLogin, setLoggedIn, loggedIn, openLogin, sportData, setSportData, cityData, setCityData, handleSubmit } = useContext(ContextApp);
+
+
   return (
     <>
       <HomepageStyle>
@@ -192,13 +186,7 @@ export default function Homepage({
           <Paragraph2>Type sport name and your city </Paragraph2>
         </Head>
 
-        {showLogin ? null : <InputFormSearch  
-        sportData={sportData}
-            setSportData={setSportData}
-            cityData={cityData}
-            setCityData={setCityData}
-            handleSubmit={handleSubmit}
-        />
+        {showLogin ? null : <InputFormSearch />
             }
 
       </HomepageStyle>

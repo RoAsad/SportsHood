@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from "styled-components";
 import { Images } from "../components";
 import { InputFormSearch } from "../components";
 import Map from "../components/Map";
 import { Link } from "react-router-dom";
+import { ContextApp } from "../ContextApp";
 
 
 
@@ -64,13 +65,9 @@ padding: 8px;
 `;
 
 
-export default function ResultPage( {loggedIn,
-    handleSubmit,sportData,
-    setSportData,
-    cityData,
-    setCityData,
-  
-}) {
+export default function ResultPage() {
+  const { loggedIn, sportData, setSportData, cityData, setCityData, handleSubmit } = useContext(ContextApp);
+
     const [users, setUsers] = useState("");
 
     useEffect((props) => {

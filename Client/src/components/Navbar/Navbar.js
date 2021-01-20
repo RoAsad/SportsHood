@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Modal from "../Modal/ModalRegistr";
 import InputForm from "../InputForm/InputFormRegistr";
@@ -7,6 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Login } from "../Login.js";
 import { GlobalStyle } from "../globalStyles.js";
+import { ContextApp } from "../../ContextApp";
 
 import {
   Nav,
@@ -24,17 +25,10 @@ const Wrapper = styled.div
 `
 // background-image: linear-gradient(90deg, #9cf0f8 0%, #7aacef 100%);
 `
-const Navbar = ({
-  openModal,
-  showLogin,
-  setShowLogin,
-  openLogin,
-  openModalUserInfo,
-  modalUserInfo,
-  setModalUserInfo,
-  setLoggedIn,
-  loggedIn,
-}) => {
+const Navbar = () => {
+  const { openModal, showModal, setModal, openModalUserInfo, modalUserInfo, setModalUserInfo, modalRef, showLogin, setShowLogin, openLogin, setLoggedIn, loggedIn } = useContext(ContextApp);
+
+
   const [clickBurgerMenu, setClickBurgerMenu] = useState(false);
 
   const handleClickBurgerMenu = () => setClickBurgerMenu(!clickBurgerMenu);
